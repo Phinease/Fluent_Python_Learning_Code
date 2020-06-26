@@ -19,3 +19,4 @@ my_file = open('dummy', 'w')
 for expression in expressions.split():
     value = eval(expression)
     print(expression.rjust(30), '->', repr(value))
+

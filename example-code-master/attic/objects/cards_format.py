@@ -51,7 +51,7 @@ from enum import Enum
 from operator import attrgetter
 import re
 
-spades diamonds clubs hearts
+# spades diamonds clubs hearts
 
 class Suite(Enum):
     spades = '\u2660'    # U+2660 ♠ BLACK SPADE SUIT

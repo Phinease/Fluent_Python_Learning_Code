@@ -36,3 +36,7 @@ def clip(text, max_len=80):
     return text[:end].rstrip()
 
 # END CLIP
+
+print(' '.rfind .__doc__)
+print("scotoytss".rfind('t', 0, 3))
+

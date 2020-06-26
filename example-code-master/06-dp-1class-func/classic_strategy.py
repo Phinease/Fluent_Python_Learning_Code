@@ -104,3 +104,7 @@ class LargeOrderPromo(Promotion):  # third Concrete Strategy
         return 0
 
 # END CLASSIC_STRATEGY
+
+
+promos = [globals()[name] for name in globals() if name.endswith('Promo')]
+print(promos)

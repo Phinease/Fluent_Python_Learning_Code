@@ -36,3 +36,10 @@ def clip(text:str, max_len:'int > 0'=80) -> str:  # <1>
     return text[:end].rstrip()
 
 # END CLIP_ANNOT
+
+
+print(clip.__code__.co_varnames)
+print(dir(clip))
+print(clip.__doc__)
+print(dir(clip))
+

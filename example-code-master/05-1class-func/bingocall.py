@@ -1,7 +1,7 @@
 """
 # BEGIN BINGO_DEMO
 
->>> bingo = BingoCage(range(3))
+>>> bingo = BingoCage(range(2))
 >>> bingo.pick()
 1
 >>> bingo()

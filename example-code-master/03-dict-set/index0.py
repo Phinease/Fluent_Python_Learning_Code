@@ -5,6 +5,8 @@
 # BEGIN INDEX0
 """Build an index mapping word -> list of occurrences"""
 
+from datetime import datetime
+startTime = datetime.now()
 import sys
 import re
 
@@ -26,3 +28,5 @@ with open(sys.argv[1], encoding='utf-8') as fp:
 for word in sorted(index, key=str.upper):  # <4>
     print(word, index[word])
 # END INDEX0
+
+print(datetime.now() - startTime)

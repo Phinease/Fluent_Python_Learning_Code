@@ -11,8 +11,9 @@ import collections
 
 WORD_RE = re.compile(r'\w+')
 
-index = collections.defaultdict(list)     # <1>
-with open(sys.argv[1], encoding='utf-8') as fp:
+index = collections.defaultdict(list)   # <1>
+print(index.get(23))
+with open('..\\..\\test.ass', encoding='utf-8') as fp:
     for line_no, line in enumerate(fp, 1):
         for match in WORD_RE.finditer(line):
             word = match.group()
