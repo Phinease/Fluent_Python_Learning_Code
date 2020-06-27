@@ -29,5 +29,10 @@ def make_averager():
         series.append(new_value)
         total = sum(series)
         return total/len(series)
-
+    print(averager.__closure__[0].cell_contents)
     return averager
+
+avg = make_averager()
+avg(0)
+avg(10)
+avg(15)

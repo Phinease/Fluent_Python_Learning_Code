@@ -26,6 +26,7 @@ def main():  # <8>
     f3()
 
 if __name__=='__main__':
+    print("Is it before the main?")
     main()  # <9>
 
 # END REGISTRATION

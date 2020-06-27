@@ -3,38 +3,6 @@
 # selecting best promotion from list of functions
 # registered by a decorator
 
-"""
-    >>> joe = Customer('John Doe', 0)
-    >>> ann = Customer('Ann Smith', 1100)
-    >>> cart = [LineItem('banana', 4, .5),
-    ...         LineItem('apple', 10, 1.5),
-    ...         LineItem('watermellon', 5, 5.0)]
-    >>> Order(joe, cart, fidelity)
-    <Order total: 42.00 due: 42.00>
-    >>> Order(ann, cart, fidelity)
-    <Order total: 42.00 due: 39.90>
-    >>> banana_cart = [LineItem('banana', 30, .5),
-    ...                LineItem('apple', 10, 1.5)]
-    >>> Order(joe, banana_cart, bulk_item)
-    <Order total: 30.00 due: 28.50>
-    >>> long_order = [LineItem(str(item_code), 1, 1.0)
-    ...               for item_code in range(10)]
-    >>> Order(joe, long_order, large_order)
-    <Order total: 10.00 due: 9.30>
-    >>> Order(joe, cart, large_order)
-    <Order total: 42.00 due: 42.00>
-
-# BEGIN STRATEGY_BEST_TESTS
-
-    >>> Order(joe, long_order, best_promo)
-    <Order total: 10.00 due: 9.30>
-    >>> Order(joe, banana_cart, best_promo)
-    <Order total: 30.00 due: 28.50>
-    >>> Order(ann, cart, best_promo)
-    <Order total: 42.00 due: 39.90>
-
-# END STRATEGY_BEST_TESTS
-"""
 
 from collections import namedtuple
 
@@ -75,18 +43,22 @@ class Order:  # the Context
         fmt = '<Order total: {:.2f} due: {:.2f}>'
         return fmt.format(self.total(), self.due())
 
-# BEGIN STRATEGY_BEST4
 
+# BEGIN STRATEGY_BEST4
 promos = []  # <1>
+print(promos)
+
 
 def promotion(promo_func):  # <2>
     promos.append(promo_func)
     return promo_func
 
+
 @promotion  # <3>
 def fidelity(order):
     """5% discount for customers with 1000 or more fidelity points"""
     return order.total() * .05 if order.customer.fidelity >= 1000 else 0
+
 
 @promotion
 def bulk_item(order):
@@ -97,6 +69,7 @@ def bulk_item(order):
             discount += item.total() * .1
     return discount
 
+
 @promotion
 def large_order(order):
     """7% discount for orders with 10 or more distinct items"""
@@ -105,9 +78,11 @@ def large_order(order):
         return order.total() * .07
     return 0
 
+
 def best_promo(order):  # <4>
     """Select best discount available
     """
     return max(promo(order) for promo in promos)
 
-# END STRATEGY_BEST4
+
+print(promos)
