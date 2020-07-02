@@ -47,5 +47,4 @@ How to inspect source code
 '''
 for i in inspect.getsourcelines(deepcopy)[0]:
     print(i, end='')
-print('-'*40)
-
+print('-' * 40)

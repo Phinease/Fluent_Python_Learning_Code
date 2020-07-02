@@ -159,3 +159,6 @@ class Vector2d:
         typecode = chr(octets[0])
         memv = memoryview(octets[1:]).cast(typecode)
         return cls(*memv)
+
+v = Vector2d(11.2, 12.52)
+print(v._Vector2d__x)

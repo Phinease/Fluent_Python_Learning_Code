@@ -72,5 +72,20 @@ class Vector2d:
     def frombytes(cls, octets):  # <2>
         typecode = chr(octets[0])  # <3>
         memv = memoryview(octets[1:]).cast(typecode)  # <4>
+        # print(memv.nbytes)
         return cls(*memv)  # <5>
 # END VECTOR2D_V1
+
+
+v = Vector2d(5, 10)
+print(v)
+print(bytes(v))
+by = bytes(v)
+print(by.decode('utf-8'))
+v2 = Vector2d.frombytes(by)
+print(v2 == v)
+
+x = bytes({151, 252})
+octets = ['b', x]
+print(memoryview(octets[1]).cast(octets[0]))
+# v = Vector2d.frombytes(octets)

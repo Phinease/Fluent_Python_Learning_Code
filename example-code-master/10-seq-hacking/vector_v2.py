@@ -165,3 +165,10 @@ class Vector:
         typecode = chr(octets[0])
         memv = memoryview(octets[1:]).cast(typecode)
         return cls(memv)
+
+s = (slice(-2, 5, 2), 2)
+print(s)
+x = range(10)[s[0]]
+print(x)
+help(slice.indices)
+print(s[0].indices(5))

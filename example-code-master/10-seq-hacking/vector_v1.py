@@ -82,10 +82,10 @@ Test of ``.__bytes__`` and ``.frombytes()`` methods::
 
 """
 
+import math
+import reprlib
 # BEGIN VECTOR_V1
 from array import array
-import reprlib
-import math
 
 
 class Vector:
@@ -123,4 +123,26 @@ class Vector:
         typecode = chr(octets[0])
         memv = memoryview(octets[1:]).cast(typecode)
         return cls(memv)  # <7>
+
+
 # END VECTOR_V1
+
+
+v = Vector([3, 5])
+iter_v = iter(v)
+for i in iter_v:
+    print(i)
+
+for i in v:
+    print(i)
+
+a = array('d', [2, 3, 12])
+by = bytes(a)
+print(by)
+by = bytes([ord('d')]) + by
+print(by)
+typecode = chr(by[0])
+print(typecode)
+print('-' * 50)
+memv = memoryview(by[1:]).cast(typecode)
+print(memv.tolist())

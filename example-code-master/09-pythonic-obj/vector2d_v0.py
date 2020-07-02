@@ -61,4 +61,16 @@ class Vector2d:
 
     def __bool__(self):
         return bool(abs(self))  # <10>
+
+    def __hash__(self):
+        return hash(self.x) ^ hash(self.y)
 # END VECTOR2D_V0
+
+
+v = Vector2d(5.5, 10.4)
+x = eval(Vector2d.__name__+"(10, 5)")
+print(repr(x))
+print(hash(v))
+
+v2 = Vector2d(0, 0)
+print(bytes(v2))
