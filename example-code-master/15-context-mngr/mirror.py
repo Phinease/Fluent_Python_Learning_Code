@@ -11,7 +11,7 @@ While active, the context manager reverses text output to
     ...      print('Alice, Kitty and Snowdrop')  # <2>
     ...      print(what)
     ...
-    pordwonS dna yttiK ,ecilA  # <3>
+    pordwonS dna yttiK ,ecilA
     YKCOWREBBAJ
     >>> what  # <4>
     'JABBERWOCKY'
@@ -73,12 +73,16 @@ class LookingGlass:
 
     def __enter__(self):  # <1>
         import sys
+
         self.original_write = sys.stdout.write  # <2>
         sys.stdout.write = self.reverse_write  # <3>
         return 'JABBERWOCKY'  # <4>
 
     def reverse_write(self, text):  # <5>
         self.original_write(text[::-1])
+
+    def test(self):
+        return 15
 
     def __exit__(self, exc_type, exc_value, traceback):  # <6>
         import sys  # <7>

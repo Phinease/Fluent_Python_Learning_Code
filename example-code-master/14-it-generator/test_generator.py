@@ -1,0 +1,5 @@
+r = range(10)
+print(r.start)
+print(r.step)
+print(r.stop)
+print()

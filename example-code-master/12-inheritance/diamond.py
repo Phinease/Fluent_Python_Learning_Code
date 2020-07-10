@@ -25,3 +25,32 @@ class D(B, C):
         self.pong()
         super().pong()
         C.pong(self)
+
+
+print('-'*20, 'A', '-'*20)
+a = A()
+a.ping()
+
+print('-'*20, 'B', '-'*20)
+
+b = B()
+b.ping()
+b.pong()
+
+print('-'*20, 'C', '-'*20)
+
+c = C()
+c.ping()
+c.pong()
+
+print('-'*20, 'D', '-'*20)
+
+d = D()
+d.ping()
+print('-'*41)
+d.pong()
+print('-'*41)
+d.pingpong()
+
+print('-'*43)
+print(D.__mro__)

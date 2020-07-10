@@ -22,3 +22,13 @@ class Sentence:
 
     def __repr__(self):
         return 'Sentence(%s)' % reprlib.repr(self.text)  # <4>
+
+
+
+s = Sentence("What is python and its package re?")
+print(s.words)
+print(repr(s))
+print(iter(s))
+x = iter(s)
+for i in x:
+    print(i)

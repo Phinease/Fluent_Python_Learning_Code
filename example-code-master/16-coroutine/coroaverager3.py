@@ -77,7 +77,7 @@ def main(data):  # <8>
             group.send(value)  # <11>
         group.send(None)  # important! <12>
 
-    # print(results)  # uncomment to debug
+    print(results)  # uncomment to debug
     report(results)
 
 
