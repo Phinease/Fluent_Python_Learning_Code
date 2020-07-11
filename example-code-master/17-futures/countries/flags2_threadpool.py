@@ -37,6 +37,7 @@ def download_many(cc_list, base_url, verbose, concur_req):
         for cc in sorted(cc_list):  # <8>
             future = executor.submit(download_one,
                             cc, base_url, verbose)  # <9>
+            print(len(executor._threads))
             to_do_map[future] = cc  # <10>
         done_iter = futures.as_completed(to_do_map)  # <11>
         if not verbose:

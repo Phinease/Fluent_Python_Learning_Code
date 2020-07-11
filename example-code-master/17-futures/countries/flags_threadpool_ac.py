@@ -31,7 +31,7 @@ def download_one(cc):
 
 # BEGIN FLAGS_THREADPOOL_AS_COMPLETED
 def download_many(cc_list):
-    cc_list = cc_list[:5]  # <1>
+    cc_list = cc_list[:20]  # <1>
     with futures.ThreadPoolExecutor(max_workers=3) as executor:  # <2>
         to_do = []
         for cc in sorted(cc_list):  # <3>

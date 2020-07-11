@@ -56,12 +56,14 @@ def download_one(cc, base_url, verbose=False):
     return Result(status, cc)  # <6>
 # END FLAGS2_BASIC_HTTP_FUNCTIONS
 
+
 # BEGIN FLAGS2_DOWNLOAD_MANY_SEQUENTIAL
 def download_many(cc_list, base_url, verbose, max_req):
+    global status
     counter = collections.Counter()  # <1>
     cc_iter = sorted(cc_list)  # <2>
     if not verbose:
-        cc_iter = tqdm.tqdm(cc_iter)  # <3>
+        cc_iter = tqdm.tqdm(cc_iter) # <3>
     for cc in cc_iter:  # <4>
         try:
             res = download_one(cc, base_url, verbose)  # <5>

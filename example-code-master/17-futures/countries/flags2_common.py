@@ -1,4 +1,5 @@
-"""Utilities for second set of flag examples.
+"""
+Utilities for second set of flag examples.
 """
 
 import os
@@ -134,6 +135,7 @@ def process_args(default_concur_req):
 
     if not cc_list:
         cc_list = sorted(POP20_CC)
+    print(args)
     return args, cc_list
 
 
