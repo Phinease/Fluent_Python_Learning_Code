@@ -12,6 +12,7 @@ import itertools
 
 
 async def spin(msg):  # <1>
+    global status
     for char in itertools.cycle('|/-\\'):
         status = char + ' ' + msg
         print(status, flush=True, end='\r')

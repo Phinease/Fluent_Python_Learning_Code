@@ -10,6 +10,7 @@
 import asyncio
 import itertools
 import sys
+import time
 
 
 @asyncio.coroutine  # <1>
@@ -21,7 +22,7 @@ def spin(msg):  # <2>
         flush()
         write('\x08' * len(status))
         try:
-            yield from asyncio.sleep(.1)  # <3>
+            yield from asyncio.sleep(.2)  # <3>
         except asyncio.CancelledError:  # <4>
             break
     write(' ' * len(status) + '\x08' * len(status))
@@ -30,20 +31,23 @@ def spin(msg):  # <2>
 @asyncio.coroutine
 def slow_function():  # <5>
     # pretend waiting a long time for I/O
-    yield from asyncio.sleep(3)  # <6>
+    yield from asyncio.sleep(10)  # <6>
+    # time.sleep(10)
     return 42
 
 
 @asyncio.coroutine
 def supervisor():  # <7>
     spinner = asyncio.async(spin('thinking!'))  # <8>
-    print('spinner object:', spinner)  # <9>
+    # new_spin = asyncio.async(spin('lying'))
+    print('spinner object:', spinner, '\n')  # <9>
     result = yield from slow_function()  # <10>
-    spinner.cancel()  # <11>
+    # spinner.cancel()  # <11>
     return result
 
 
 def main():
+    print()
     loop = asyncio.get_event_loop()  # <12>
     result = loop.run_until_complete(supervisor())  # <13>
     loop.close()
